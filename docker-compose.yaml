@@ -5,28 +5,28 @@ services:
     app:
       build:
         context: ./golang
-      container_name: app_paradox
+      container_name: app_import_fiplan
       ports:
-        - "9000:9000"
+        - "9001:9000"
       volumes:
         - ./src:/go/src/
       networks:
-        - netParadox
+        - netImportFiplan
 
     db:
       build:
         context: ./PostgreSQL
-      container_name: pg_paradox
+      container_name: pg_import_fiplan
       restart: always
       ports:
-        - 55432:5432
+        - 54321:5432
       volumes:
         - ./PostgreSQL/data:/var/lib/postgresql/data       
       environment:
         POSTGRES_PASSWORD: 1234
       networks:
-        - netParadox          
+        - netImportFiplan
 
 networks: 
-  netParadox:
+  netImportFiplan:
     driver: bridge
