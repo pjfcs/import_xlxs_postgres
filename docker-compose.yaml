@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+    app:
+      build:
+        context: ./golang
+      container_name: app_paradox
+      ports:
+        - "9000:9000"
+      volumes:
+        - ./src:/go/src/
+      networks:
+        - netParadox
+
+    db:
+      build:
+        context: ./PostgreSQL
+      container_name: pg_paradox
+      restart: always
+      ports:
+        - 55432:5432
+      volumes:
+        - ./PostgreSQL/data:/var/lib/postgresql/data       
+      environment:
+        POSTGRES_PASSWORD: 1234
+      networks:
+        - netParadox          
+
+networks: 
+  netParadox:
+    driver: bridge
