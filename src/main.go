@@ -2,26 +2,56 @@ package main
 
 import (
     "fmt"
+	"os"
+	"github.com/BurntSushi/toml"
+	//"io/ioutil"
+    //"strings"
+    //"github.com/xuri/excelize/v2"
+/*
+	"bytes"
+	"encoding/json"
+	"fmt"	
+	"path/filepath"
+	"regexp"
+	"strings"
+	"testing"	
+	"github.com/BurntSushi/toml/internal/tag"
+	tomltest "github.com/BurntSushi/toml/internal/toml-test"
+*/	
 
-    "github.com/xuri/excelize/v2"
 )
 
-/*
-//
-// criar arquivo excel de teste
-//
-func main() {
-    f := excelize.NewFile()
-	xlsx := "excel/teste.xlsx"
-    index := f.NewSheet("Sheet2")
-    f.SetCellValue("Sheet2", "A2", "Hello world.")
-    f.SetCellValue("Sheet1", "B2", 100)
-    f.SetActiveSheet(index)
-    if err := f.SaveAs(xlsx); err != nil {
-        fmt.Println(err)
+
+type Config struct {
+    linhaInicioTabela int `toml:"linhaInicioTabela"`
+    hostPostgreSQL    string `toml:"hostPostgreSQL"`
+    dbPostgreSQL      string `toml:"dbPostgreSQL"`
+	userPostgreSQL    string `toml:"userPostgreSQL"`
+	pwdUserPostgreSQL string `toml:"pwdUserPostgreSQL"`
+}
+
+var conf Config
+
+func init(){
+    data, err := os.ReadFile("config")
+    if err != nil {
+        panic(err)
+    }
+
+    if _, err := toml.Decode(string(data), &conf); err != nil {
+         panic(err)
     }
 }
-*/
+
+func main() {
+	init
+    fmt.Printf("linhaInicioTabela: %s\n", conf.linhaInicioTabela)
+    fmt.Printf("hostPostgreSQL: %s\n", conf.hostPostgreSQL)
+    fmt.Printf("dbPostgreSQL: %s\n", conf.dbPostgreSQL)
+    fmt.Printf("pwdUserPostgreSQL: %s\n", conf.pwdUserPostgreSQL)
+}
+
+/*
 
 func main{
 	fiplan := "excel/PLAN 61_2022.xlsx"
