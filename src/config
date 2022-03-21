@@ -1,0 +1,5 @@
+linhaInicioTabela = 12
+hostPostgreSQL    = "pg_import_fiplan"
+dbPostgreSQL      = "db_Fiplan"
+userPostgreSQL    = "userGestor"
+pwdUserPostgreSQL = "1234"
