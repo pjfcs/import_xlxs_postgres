@@ -7,73 +7,76 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
     \c db_fiplan;
     CREATE SCHEMA fiplan;
     CREATE TABLE fiplan.poder(
-          id                                  serial
-        , 
+          id_poder                            serial
+        , codigo_do_poder                     varchar
+        , nome_do_poder                       varchar
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.orgao(
-          id                                  serial
-        , 
+          id_orgao                            serial
+        , codigo_do_orgao                     varchar
+        , nome_do_orgao                       varchar
+        , sigla_do_orgao                      varchar
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.uo(
-          id                                  serial
+          id_uo                               serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.ug(
-          id                                  serial
+          id_ug                               serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.usp(
-          id                                  serial
+          id_usp                              serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.acao(
-          id                                  serial
+          id_acao                             serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.prioridade_de_governo(
-          id                                  serial
+          id_prioridade_de_governo            serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.funcao(
-          id                                  serial
+          id_funcao                           serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.subfuncao(
-          id                                  serial
+          id_subfuncao                        serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.programa(
-          id                                  serial
+          id_programa                         serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.produto(
-          id                                  serial
+          id_produto                          serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
     )
     CREATE TABLE fiplan.unidade_de_medida(
-          id                                  serial
+          id_unidade_de_medida                serial
         , 
         , dt_cadastro                         timestamp default now()
         , primary key ( id )
