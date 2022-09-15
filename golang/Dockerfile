@@ -3,6 +3,8 @@ FROM golang:1.16
 WORKDIR /go/src
 ENV PATH="/go/bin:${PATH}"
 
+COPY ./.bashrc /root
+
 RUN go get -u github.com/spf13/cobra@latest && \
     go get -u github.com/xuri/excelize/v2 && \
     go get -u github.com/BurntSushi/toml && \

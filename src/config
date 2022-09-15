@@ -1,5 +1,8 @@
-linhaInicioTabela = 12
-hostPostgreSQL    = "pg_import_fiplan"
-dbPostgreSQL      = "db_Fiplan"
-userPostgreSQL    = "userGestor"
-pwdUserPostgreSQL = "1234"
+linha_inicio_tabela = 12
+host_postgresql = "pg_import_fiplan"
+port_postgresql = "5432"
+database_postgresql = "db_fiplan"
+user_postgresql = "usergestor"
+password_user_postgresql = "1234"
+arquivo_excel = "excel/PLAN 61_2022.xlsx"
+planilha_excel = " Planilha1"
