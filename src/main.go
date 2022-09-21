@@ -70,6 +70,7 @@ func getLink() (*sql.DB) {
 
 func getExcel(){    
 	excelFile, err := excelize.OpenFile(conf.ArquivoExcel)
+    fmt.Println("Arquivo Excel: ",conf.ArquivoExcel)
     if err != nil {
         fmt.Println(err)
         return
@@ -90,8 +91,10 @@ func getExcel(){
     , codigo_da_prioridade_de_governo, prioridade, esfera_orcamentaria, codigo_da_funcao, nome_da_funcao, sigla_da_funcao
     , codigo_da_subfuncao, nome_da_subfuncao, sigla_da_subfuncao, codigo_do_programa, nome_do_programa, sigla_do_programa
     , codigo_do_produto, nome_do_produto, sigla_do_produto, codigo_da_unidade_de_medida, nome_da_unidade_de_medida
-    , sigla_da_unidade_de_medida, codigo_da_regiao, nome_da_regiao, codigo_da_destinacao, codigo_do_identificador_de_uso
-    , codigo_da_fonte, nome_da_fonte, sigla_da_fonte, codigo_da_subfonte, nome_da_subfonte, sigla_da_subfonte, codigo_da_natureza
+    , sigla_da_unidade_de_medida, codigo_da_regiao, nome_da_regiao, codigo_da_destinacao, codigo_do_identificador_de_exercicio
+    , codigo_da_ftfe, nome_da_ftfe, nome_resumido_da_ftfe, codigo_do_identificador_de_uso
+    , codigo_da_fonte, nome_da_fonte, sigla_da_fonte, codigo_da_subfonte, nome_da_subfonte, sigla_da_subfonte, codigo_do_tiac
+    , nome_do_tiac, codigo_do_diac, nome_do_diac, codigo_do_ia, nome_do_ia, codigo_da_natureza
     , nome__da_natureza, sigla_da_natureza, codigo_da_categoria, nome__da_categoria_economica, codigo_do_grupo, nome_do_grupo
     , sigla_do_grupo, codigo_da_modalidade, nome_da_modalidade, sigla_da_modalidade, codigo_do_elemento, nome_do_elemento
     , sigla_do_elemento, codigo_do_tipo_de_gasto, descricao_do_tipo_de_gasto, valor_orcado_inicial, valor_suplementado

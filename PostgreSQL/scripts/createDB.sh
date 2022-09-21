@@ -51,6 +51,15 @@ CREATE TABLE fiplan.orgao(
         , dt_cadastro                         timestamp default now()
         , primary key ( id_usp )
     );
+    CREATE TABLE fiplan.programa(
+          id_programa                         serial
+        , id_subfuncao                        bigint
+        , codigo_do_programa                  varchar
+        , nome_do_programa                    varchar
+        , sigla_do_programa                   varchar
+        , dt_cadastro                         timestamp default now()
+        , primary key ( id_programa )
+    );    
     CREATE TABLE fiplan.acao(
           id_acao                             serial
         , id_usp                              serial
@@ -66,6 +75,16 @@ CREATE TABLE fiplan.orgao(
         , dt_cadastro                         timestamp default now()
         , primary key ( id_acao )
     );
+    CREATE TABLE fiplan.fonte(
+          id_fonte                            serial
+        , codigo_da_destinacao                varchar
+        , codigo_do_identificador_de_uso      varchar
+        , codigo_da_fonte                     varchar
+        , nome_da_fonte                       varchar
+        , sigla_da_fonte                      varchar
+        , dt_cadastro                         timestamp default now()
+        , primary key ( id_fonte )
+    );    
     CREATE TABLE fiplan.prioridade_de_governo(
           id_prioridade_de_governo            serial
         , codigo_da_prioridade_de_governo     varchar
@@ -90,15 +109,7 @@ CREATE TABLE fiplan.orgao(
         , dt_cadastro                         timestamp default now()
         , primary key ( id_subfuncao )
     );
-    CREATE TABLE fiplan.programa(
-          id_programa                         serial
-        , id_subfuncao                        bigint
-        , codigo_do_programa                  varchar
-        , nome_do_programa                    varchar
-        , sigla_do_programa                   varchar
-        , dt_cadastro                         timestamp default now()
-        , primary key ( id_programa )
-    );
+
     CREATE TABLE fiplan.produto(
           id_produto                          serial
         , id_programa                         bigint
@@ -123,16 +134,7 @@ CREATE TABLE fiplan.orgao(
         , dt_cadastro                         timestamp default now()
         , primary key ( id_regiao )
     );
-    CREATE TABLE fiplan.fonte(
-          id_fonte                            serial
-        , codigo_da_destinacao                varchar
-        , codigo_do_identificador_de_uso      varchar
-        , codigo_da_fonte                     varchar
-        , nome_da_fonte                       varchar
-        , sigla_da_fonte                      varchar
-        , dt_cadastro                         timestamp default now()
-        , primary key ( id_fonte )
-    );
+
     CREATE TABLE fiplan.subfonte(
           id_subfonte                         serial
         , codigo_da_subfonte                  varchar
@@ -254,10 +256,24 @@ CREATE TABLE fiplan.orgao(
         , codigo_da_regiao                    varchar
         , nome_da_regiao                      varchar
         , codigo_da_destinacao                varchar
-        , codigo_do_identificador_de_uso      varchar
-        , codigo_da_fonte                     varchar
-        , nome_da_fonte                       varchar
-        , sigla_da_fonte                      varchar
+
+        , codigo_do_identificador_de_exercicio     varchar
+        , codigo_da_ftfe                           varchar
+        , nome_da_ftfe                             varchar
+        , nome_resumido_da_ftfe                    varchar
+
+        , codigo_do_identificador_de_uso           varchar
+        , codigo_da_fonte                          varchar
+        , nome_da_fonte                            varchar
+        , sigla_da_fonte                           varchar
+
+        , codigo_do_tiac                           varchar
+        , nome_do_tiac                             varchar
+        , codigo_do_diac                           varchar
+        , nome_do_diac                             varchar
+        , codigo_do_ia                             varchar
+        , nome_do_ia                               varchar
+
         , codigo_da_subfonte                  varchar
         , nome_da_subfonte                    varchar
         , sigla_da_subfonte                   varchar
