@@ -21,7 +21,9 @@ services:
       ports:
         - 54321:5432
       volumes:
-      - ./PostgreSQL/data:/var/lib/postgresql/data       
+      - ./PostgreSQL/data:/var/lib/postgresql/data
+      # - ./PostgreSQL/scripts/createDB.sh:/docker-entrypoint-initdb.d/createDB.sh 
+      # command: chmod +x /scripts/dbFiplan.sh
       environment:
         POSTGRES_PASSWORD: 1234
       networks:

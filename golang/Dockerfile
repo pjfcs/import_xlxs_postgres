@@ -5,10 +5,11 @@ ENV PATH="/go/bin:${PATH}"
 
 COPY ./.bashrc /root
 
-RUN go get -u github.com/spf13/cobra@latest && \
-    go get -u github.com/xuri/excelize/v2 && \
+RUN \
+#   go install github.com/golang/mock/mockgen@v1.5.0 && \
+#    go get -u github.com/spf13/cobra@latest && \
     go get -u github.com/BurntSushi/toml && \
-    go install github.com/golang/mock/mockgen@v1.5.0
+    go get -u github.com/xuri/excelize/v2
 
 
 RUN usermod -u 1000 www-data

@@ -9,17 +9,6 @@ import (
     "github.com/xuri/excelize/v2"
     "database/sql"
     _ "github.com/lib/pq"
-/*
-	"bytes"
-	"encoding/json"
-	"fmt"	
-	"path/filepath"
-	"regexp"
-	"strings"
-	"testing"	
-	"github.com/BurntSushi/toml/internal/tag"
-	tomltest "github.com/BurntSushi/toml/internal/toml-test"
-*/	    
 )
 
 type Config struct {
@@ -54,16 +43,12 @@ func getLink() (*sql.DB) {
     conStr += " dbname="   + conf.DatabasePostgreSQL
     conStr += " sslmode=disable"
 
-    //fmt.Println(conStr)
-    // db, err := sql.Open("postgres", "host=localhost port=5432 user=aprenda password=golang dbname=blog sslmode=disable")
-    
+   
     db, err := sql.Open("postgres", conStr)
 
     if err != nil {
         panic(err)
     }
-
-    //err = db.Ping()
 
     return db
 }
@@ -119,23 +104,28 @@ func getExcel(){
     sql = strings.TrimSuffix(sql, ", ")
     fmt.Println(sql);
 
-    link := getLink()
 
-    _, err = link.Query(sql)
-
-    switch err {
-        //case sql.ErrNoRows:
-        //    fmt.Println("No rows were returned!")
-        default:
-            fmt.Println("Unable to scan the row. %v", err)
-    }    
-/**/
 }
 
-func main() {    
-    fmt.Println("")
-    fmt.Println("Iniciando importador da planilha 61 do fiplan.")
-/*    
+func persistData(sql){
+    link := getLink()
+    _, err = link.Query(sql)
+    if err != nil{
+        fmt.Println("Erro: %v", err)
+    }else{
+        fmt.Println("Dados persistidos com sucesso!")
+    }
+}
+
+func showPostgresConnStatus(link){
+    if link != nil {
+        fmt.Println("Conectado ao Postgres.")
+    }else{
+        fmt.Println("Não conectado!")
+    }
+}
+
+func showConfigParams(){
     fmt.Println("")
     fmt.Printf("linhaInicioTabela: %d\n", conf.LinhaInicioTabela)
     fmt.Printf("hostPostgreSQL: %s\n", conf.HostPostgreSQL)
@@ -143,15 +133,12 @@ func main() {
     fmt.Printf("databasePostgreSQL: %s\n", conf.DatabasePostgreSQL)
     fmt.Printf("passwordUserPostgreSQL: %s\n", conf.PasswordUserPostgreSQL)
     fmt.Println("")
-/**/    
+}
+
+func main() {    
     fmt.Println("")
-/*    
-    if link != nil {
-        fmt.Println("Conectado ao Postgres.")
-    }else{
-        fmt.Println("Não conectado!")
-    }
-/**/    
+    fmt.Println("Iniciando importador da planilha 61 do fiplan.")
+    fmt.Println("")
     getExcel()
     fmt.Println("")
 }
